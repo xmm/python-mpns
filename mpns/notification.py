@@ -36,7 +36,10 @@ class MPNSBase(object):
     def serialize_tree(self, tree):
         file = io.BytesIO()
         tree.write(file, encoding='utf-8')
-        contents = "<?xml version='1.0' encoding='utf-8'?>" + file.getvalue()
+        contents = ''.join((
+            "<?xml version='1.0' encoding='utf-8'?>",
+            file.getvalue(),
+        ))
         file.close()
         return contents
 
